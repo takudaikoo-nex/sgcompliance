@@ -10,18 +10,20 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
+export const dynamic = 'force-dynamic'
+
 export default function LoginPage() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [errorMsg, setErrorMsg] = useState<string | null>(null)
     const router = useRouter()
-    const supabase = createClient()
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
         setIsLoading(true)
         setErrorMsg(null)
+        const supabase = createClient()
 
         try {
             const { error: signInError } = await supabase.auth.signInWithPassword({ email, password })

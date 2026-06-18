@@ -28,9 +28,9 @@ const navItems = [
 export function AdminSidebar() {
     const pathname = usePathname()
     const router = useRouter()
-    const supabase = createClient()
 
     const handleSignOut = async () => {
+        const supabase = createClient()
         await supabase.auth.signOut()
         router.push("/auth/login")
         router.refresh()
