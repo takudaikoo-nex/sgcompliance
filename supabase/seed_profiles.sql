@@ -1,5 +1,7 @@
 -- profiles シードデータ
--- 実行前に supabase/schema.sql を先に実行してください
+-- department テキストカラムを追加してから INSERT
+alter table profiles
+  add column if not exists department text;
 
 insert into profiles (id, full_name, email, department, role) values
 -- 管理者
