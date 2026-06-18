@@ -2,32 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    /* SMARTGOLF Compliance - Light Theme */
+    --background: 0 0% 100%;
+    --foreground: 221 82% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 221 82% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 221 82% 12%;
+
+    /* Primary: #0d3280 = hsl(221, 82%, 28%) */
+    --primary: 221 82% 28%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 221 82% 28%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 214 32% 91%;
+    --accent-foreground: 221 82% 28%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 82% 28%;
+
+    --radius: 0.5rem;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@layer base {
+  * {
+    @apply border-border;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  body {
+    @apply bg-background text-foreground;
   }
 }
