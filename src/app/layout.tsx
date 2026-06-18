@@ -10,8 +10,11 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-    title: "SGコンプライアンス学習",
+    title: "コンプラ守るくん",
     description: "SMARTGOLF コンプライアンス e-ラーニングシステム",
+    icons: {
+        icon: "/images/favicon.png",
+    },
 };
 
 export default function RootLayout({
