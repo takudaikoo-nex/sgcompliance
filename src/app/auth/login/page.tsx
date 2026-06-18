@@ -45,7 +45,8 @@ export default function LoginPage() {
             }
             router.refresh()
         } catch (error: unknown) {
-            const message = error instanceof Error ? error.message : "ログインに失敗しました"
+            const raw = error instanceof Error ? error.message : ""
+            const message = raw && raw !== "{}" ? raw : "メールアドレスまたはパスワードが正しくありません"
             setErrorMsg(message)
         } finally {
             setIsLoading(false)
