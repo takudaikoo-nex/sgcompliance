@@ -26,8 +26,16 @@ export function UserHeader({ profile }: { profile: Profile }) {
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
             <div className="container flex h-16 items-center gap-6">
-                <Link href="/dashboard">
-                    <Image src="/images/logo.png" alt="SMARTGOLF" width={140} height={35} priority />
+                <Link href="/dashboard" className="flex-shrink-0">
+                    <div className="relative h-9 w-44">
+                        <Image
+                            src="/images/logo.png"
+                            alt="SMARTGOLF"
+                            fill
+                            className="object-contain mix-blend-multiply"
+                            priority
+                        />
+                    </div>
                 </Link>
 
                 <nav className="flex items-center gap-1 text-sm font-medium">
