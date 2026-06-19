@@ -63,17 +63,14 @@ export default async function ContentPage({ params }: { params: { id: string } }
                     components={{
                         img: ({ src, alt }) => {
                             if (!src) return null
-                            const isThumbnail = src.includes("_thumbnail")
                             return (
-                                <div className={`my-4 rounded-lg overflow-hidden relative ${isThumbnail ? "aspect-video" : "aspect-[4/3]"}`}>
-                                    <Image
-                                        src={src}
-                                        alt={alt ?? ""}
-                                        fill
-                                        className="object-cover"
-                                        sizes="(max-width: 768px) 100vw, 720px"
-                                    />
-                                </div>
+                                <Image
+                                    src={src}
+                                    alt={alt ?? ""}
+                                    width={720}
+                                    height={405}
+                                    className="w-full h-auto rounded-lg my-2"
+                                />
                             )
                         },
                     }}
