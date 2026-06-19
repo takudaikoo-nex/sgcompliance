@@ -13,7 +13,7 @@ export default async function DashboardPage() {
 
     const [
         { data: profile },
-        { data: contents },
+        { data: contents, error: contentsError },
         { data: progress },
         { data: passedAttempts },
         { data: allAttempts },
@@ -27,6 +27,8 @@ export default async function DashboardPage() {
         supabase.from("user_badges").select("id").eq("user_id", user!.id),
     ])
 
+    console.error("[DEBUG] contents:", contents, "error:", contentsError)
+
     const totalContents = contents?.length ?? 0
     const passedSet = new Set(passedAttempts?.map((a) => a.content_id) ?? [])
     const passedCount = passedSet.size
@@ -38,6 +40,16 @@ export default async function DashboardPage() {
 
     return (
         <div className="space-y-6">
+            {contentsError && (
+                <div className="bg-red-50 border border-red-200 rounded p-3 text-xs text-red-800 font-mono">
+                    [DEBUG] contents error: {JSON.stringify(contentsError)}
+                </div>
+            )}
+            {!contentsError && contents !== null && (
+                <div className="bg-green-50 border border-green-200 rounded p-3 text-xs text-green-800">
+                    [DEBUG] contents count: {contents.length}
+                </div>
+            )}
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-[#0d3280]">
